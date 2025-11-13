@@ -1,2 +1,196 @@
-# Strife
-Miniature payment gateway service inspired by Stripe
+# Strife Payment System
+
+## Overview
+
+Strife is a miniature payment gateway service inspired by Stripe that facilitates secure financial transactions between different bank servers. This distributed system provides a robust infrastructure for processing payments with strong security, resilience against failures, and transaction consistency guarantees.
+
+The system consists of three main components:
+- **Bank Servers**: Maintain account information and process financial transactions
+- **Payment Gateway**: Orchestrates transactions between clients and banks
+- **Client Applications**: Interface with the payment gateway to initiate payments
+
+## Features
+
+- **Secure Authentication and Authorization**: Uses mutual TLS and token-based authentication
+- **Comprehensive Logging**: Records detailed information about all system activities
+- **Idempotent Payments**: Ensures transactions are processed exactly once even if retried
+- **Offline Payment Support**: Allows payments to be queued when the gateway is unavailable
+- **Two-Phase Commit**: Ensures transaction consistency across multiple banks
+- **Timeout Handling**: Gracefully manages timeout situations during transaction processing
+
+## System Requirements
+
+- Python 3.8 or higher
+- gRPC and Protocol Buffers
+- OpenSSL for certificate generation
+
+## Project Structure
+
+```
+P3/
+├── certificate/
+│   ├── ca.cert
+│   ├── ca.key
+│   ├── client.cert
+│   ├── client.key
+│   ├── server.cert
+│   └── server.key
+├── protofiles/
+│   └── payment.proto
+├── data/
+│   ├── bank1_users.json
+│   └── active_tokens.json
+├── logs/
+│   └── gateway.log
+├── pending_transactions/
+├── bank_server.py
+├── gateway.py
+├── client.py
+└── README.md
+```
+
+## Setup Instructions
+
+### Generate Certificates
+
+Before running the system, you need to generate SSL certificates for secure communication:
+
+```bash
+# Create directory for certificates
+mkdir -p certificate
+
+# Generate CA key and certificate
+openssl genrsa -out certificate/ca.key 2048
+openssl req -new -x509 -key certificate/ca.key -out certificate/ca.cert -days 365 -subj "/CN=Strife-CA"
+
+# Generate server key and certificate signing request
+openssl genrsa -out certificate/server.key 2048
+openssl req -new -key certificate/server.key -out certificate/server.csr -subj "/CN=localhost"
+
+# Generate client key and certificate signing request
+openssl genrsa -out certificate/client.key 2048
+openssl req -new -key certificate/client.key -out certificate/client.csr -subj "/CN=strife-client"
+
+# Sign the server and client certificates with the CA
+openssl x509 -req -in certificate/server.csr -CA certificate/ca.cert -CAkey certificate/ca.key -CAcreateserial -out certificate/server.cert -days 365
+openssl x509 -req -in certificate/client.csr -CA certificate/ca.cert -CAkey certificate/ca.key -CAcreateserial -out certificate/client.cert -days 365
+
+# Clean up CSR files
+rm certificate/*.csr
+```
+
+### Install Dependencies
+
+```bash
+pip install grpcio grpcio-tools protobuf
+```
+
+### Generate Protocol Buffer Code
+
+```bash
+python -m grpc_tools.protoc -I protofiles --python_out=. --grpc_python_out=. protofiles/payment.proto
+```
+
+## Running the System
+
+Start components in the following order:
+
+### 1. Start Bank Servers
+
+```bash
+# Start Bank1 on port 50052
+python bank_server.py Bank1 50052
+
+# Start Bank2 on port 50053 (in a new terminal)
+python bank_server.py Bank2 50053
+```
+
+### 2. Start Payment Gateway
+
+```bash
+# Start on default port 50051
+python gateway.py
+```
+
+### 3. Start Client Application
+
+```bash
+python client.py
+```
+
+## Using the Client
+
+The client provides a menu-driven interface with the following options:
+
+1. **Connect to server**: Connect to the payment gateway
+2. **Authenticate**: Login with your bank credentials
+3. **Check balance**: View your account balance
+4. **Make payment**: Transfer funds to another account
+5. **Test idempotency**: Test the idempotent payment mechanism
+6. **View pending transactions**: See queued offline payments
+7. **Retry pending transactions**: Manually retry queued payments
+8. **Disconnect**: Close the connection to the gateway
+9. **Exit**: Exit the application
+
+### Sample User Credentials
+
+The system automatically generates sample user data for each bank. You can use these credentials to log in:
+
+- Username: `user1` to `user5`
+- Password: `pass1` to `pass5`
+- Bank name: `Bank1` or `Bank2`
+
+## Key Features Explained
+
+### Authentication and Authorization
+
+Authentication happens in two stages:
+1. Mutual TLS ensures secure communication
+2. Username/password verification authenticates the user
+
+After successful authentication, the gateway issues a token that the client includes in all subsequent requests. The AuthInterceptor verifies this token and ensures users can only access their own resources.
+
+### Idempotent Payments
+
+Each payment includes a unique `payment_id` generated by the client. The gateway caches transaction results keyed by this ID. If a client retries a payment with the same ID, the gateway returns the cached result instead of processing it again.
+
+This ensures that temporary issues like network failures or timeouts don't result in duplicate payments.
+
+### Offline Payments
+
+When the gateway is unavailable, the client stores payment details in persistent storage and automatically retries them when connectivity is restored. This mechanism ensures payments aren't lost during outages.
+
+Key aspects:
+- Payments are saved in user-specific directories
+- A background thread periodically checks connectivity
+- Transactions are automatically retried when the gateway becomes available
+
+### Two-Phase Commit
+
+The gateway uses the two-phase commit protocol to ensure transaction consistency:
+
+1. **Prepare Phase**: Both banks verify and prepare the transaction
+2. **Commit/Abort Phase**: If both banks are ready, the gateway instructs them to commit; otherwise, it instructs them to abort
+
+Timeouts at each phase prevent the system from hanging indefinitely if a bank becomes unresponsive.
+
+## Troubleshooting
+
+### Common Issues
+
+- **Connection failures**: Ensure all components are running and ports are accessible
+- **Authentication failures**: Verify you're using valid credentials
+- **Certificate errors**: Regenerate certificates if they've expired
+
+### Logs
+
+- Gateway logs: `logs/gateway.log`
+- Bank and client logs: Displayed in console output
+
+## Security Considerations
+
+This implementation uses several security mechanisms:
+- Mutual TLS for secure communication
+- Strong authentication with tokens
+- Fine-grained authorization
+- Secure password handling (not logged)
