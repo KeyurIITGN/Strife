@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package payment;
+
+// Payment Gateway Service (for client-gateway communication)
+service PaymentGateway {
+  // Authentication service
+  rpc Authenticate(AuthRequest) returns (AuthResponse) {}
+  
+  // Account operations
+  rpc CheckBalance(BalanceRequest) returns (BalanceResponse) {}
+  rpc ProcessPayment(PaymentRequest) returns (PaymentResponse) {}
+  rpc GetTransactionHistory(HistoryRequest) returns (HistoryResponse) {}
+}
+
+// Bank Service (for gateway-bank communication)
+service BankService {
+  // Authentication between gateway and bank
+  rpc VerifyCredentials(CredentialVerificationRequest) returns (CredentialVerificationResponse) {}
+  rpc GetBalance(BankBalanceRequest) returns (BankBalanceResponse) {}
+  rpc ProcessTransaction(BankTransactionRequest) returns (BankTransactionResponse) {}
+  rpc GetTransactionHistory(BankHistoryRequest) returns (BankHistoryResponse) {}
+  rpc PrepareTransaction(PrepareTransactionRequest) returns (PrepareTransactionResponse) {}
+  rpc CommitTransaction(CommitTransactionRequest) returns (CommitTransactionResponse) {}
+  rpc AbortTransaction(AbortTransactionRequest) returns (AbortTransactionResponse) {}
+}
+
+message BankTransactionRequest {
+  string account_id = 1;
+  string type = 2;  // "debit" or "credit"
+  double amount = 3;
+  string counterparty = 4;
+  string payment_id = 5;  // For idempotency
+}
+
+
+message PrepareTransactionRequest {
+  string transaction_id = 1;
+  string account_id = 2;
+  string type = 3;  // "debit" or "credit"
+  double amount = 4;
+  string counterparty = 5;
+}
+
+message PrepareTransactionResponse {
+  bool ready = 1;  // Vote: True if can commit, False otherwise
+  string message = 2;
+}
+
+
+message CommitTransactionRequest {
+  string transaction_id = 1;
+}
+
+message CommitTransactionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message AbortTransactionRequest {
+  string transaction_id = 1;
+}
+
+message AbortTransactionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message BankTransactionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message BankHistoryRequest {
+  string account_id = 1;
+  int32 limit = 2;
+}
+
+message BankHistoryResponse {
+  bool success = 1;
+  repeated Transaction transactions = 2;
+  string message = 3;
+}
+
+message BankBalanceRequest {
+  string account_id = 1;
+}
+
+message BankBalanceResponse {
+  bool success = 1;
+  double balance = 2;
+  string message = 3;
+}
+
+// Client-Gateway Authentication Messages
+message AuthRequest {
+  string username = 1;
+  string password = 2;
+  string bank_name = 3;  // Optional, depending on your design
+}
+
+message AuthResponse {
+  bool success = 1;
+  string token = 2;
+  string message = 3;  // For error messages or success confirmations
+}
+
+// Gateway-Bank Authentication Messages
+message CredentialVerificationRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message CredentialVerificationResponse {
+  bool valid = 1;
+  string account_id = 2;  // Returns the account ID if credentials are valid
+  string message = 3;
+}
+
+// Balance check messages
+message BalanceRequest {
+  string token = 1;
+  string account_id = 2;
+}
+
+message BalanceResponse {
+  bool success = 1;
+  double balance = 2;
+  string message = 3;
+}
+
+// Payment processing messages
+message PaymentRequest {
+  string token = 1;
+  string sender_account = 2;
+  string receiver_account = 3;
+  string receiver_bank = 4;  // Which bank the receiver belongs to
+  double amount = 5;
+  string payment_id = 6;  // For idempotency
+}
+
+message PaymentResponse {
+  bool success = 1;
+  string transaction_id = 2;
+  string status = 3;  // "completed", "pending", "failed"
+  string message = 4;
+}
+
+// Transaction history messages
+message HistoryRequest {
+  string token = 1;
+  string account_id = 2;
+  int32 limit = 3;  // Optional, for pagination
+}
+
+message Transaction {
+  string transaction_id = 1;
+  string type = 2;  // "debit" or "credit"
+  double amount = 3;
+  string counterparty = 4;  // The other account involved
+  string timestamp = 5;
+  string status = 6;
+}
+
+message HistoryResponse {
+  bool success = 1;
+  repeated Transaction transactions = 2;
+  string message = 3;
+}

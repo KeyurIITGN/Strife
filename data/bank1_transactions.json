@@ -1,0 +1,214 @@
+{
+  "ACC001": [
+    {
+      "transaction_id": "df1e42e7-8878-446a-bf38-736e784f04d4",
+      "type": "credit",
+      "amount": 1000.0,
+      "counterparty": "Bank",
+      "timestamp": "2025-03-08 21:45:13",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "f7c59d24-ee31-40cd-8359-44b41201a070-receiver-a856d984-0861-4c00-9cd0-5ac87d06c889",
+      "type": "credit",
+      "amount": 500.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 11:33:59",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "eb9b0c76-028a-48fb-83cd-1a064c0fc1f7-receiver-117c0892-5ccf-4a67-84d6-55c4b8697a32",
+      "type": "credit",
+      "amount": 250.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 11:34:51",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "94839850-2bea-47d1-a9d5-35e98cab4ec1-receiver-43ead7c6-2157-42c0-a5d8-9e6612ec5f7c",
+      "type": "credit",
+      "amount": 250.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 18:21:17",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "7620d30a-1cb5-451c-b30e-6419230ed13b-receiver-b67ba56e-d349-4623-85ae-ae6b2ade4f31",
+      "type": "credit",
+      "amount": 500.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 18:23:44",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "b4d29fca-9e93-4689-bb15-542c3d31c273-sender-262e84b8-eb9e-4c38-9cc7-bd152436f6c0",
+      "type": "debit",
+      "amount": 1500.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 18:24:21",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "25570b73-7a19-4a21-8d61-3b9c7be9a894-receiver-19a35d6c-f0e8-4523-b3f1-e1320fe91337",
+      "type": "credit",
+      "amount": 20.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 20:58:17",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "3f3bc12f-4ca1-45bb-bcef-aafe86643e05-receiver-3455",
+      "type": "credit",
+      "amount": 80.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 20:59:07",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "2b216456-1066-4ef9-91cf-acd3701e7d84-sender-6c0a481f-6d46-4285-8426-b776cbd37753",
+      "type": "debit",
+      "amount": 4.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-10 23:13:31",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "1899f0b0-9078-4689-a596-9b3a6f65f82a-sender-de5ffeed-36ab-456d-9c7f-ac85643e3562",
+      "type": "debit",
+      "amount": 96.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-11 21:33:26",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "b6cdb4a6-4247-4d69-9ebc-2f22a7c7b776-receiver-394adc90-e294-4880-8826-ffc21dda07a9",
+      "type": "credit",
+      "amount": 500.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-11 21:41:08",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "52695da9-226f-4117-95a1-4cefaba58d0c-receiver-112",
+      "type": "credit",
+      "amount": 50.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-11 21:41:49",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "aa0494e7-3e5b-4830-9701-9937de0363c0-sender-7d0304c8-f672-49ca-87e9-fdd7393970e4",
+      "type": "debit",
+      "amount": 50.0,
+      "counterparty": "Bank1/ACC002",
+      "timestamp": "2025-03-11 21:42:14",
+      "status": "completed"
+    }
+  ],
+  "ACC002": [
+    {
+      "transaction_id": "c9e86a52-d339-4f0d-b284-0591d4ba792f",
+      "type": "credit",
+      "amount": 2000.0,
+      "counterparty": "Bank",
+      "timestamp": "2025-03-08 21:45:13",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "f7c59d24-ee31-40cd-8359-44b41201a070-sender-a856d984-0861-4c00-9cd0-5ac87d06c889",
+      "type": "debit",
+      "amount": 500.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 11:33:59",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "eb9b0c76-028a-48fb-83cd-1a064c0fc1f7-sender-117c0892-5ccf-4a67-84d6-55c4b8697a32",
+      "type": "debit",
+      "amount": 250.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 11:34:51",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "94839850-2bea-47d1-a9d5-35e98cab4ec1-sender-43ead7c6-2157-42c0-a5d8-9e6612ec5f7c",
+      "type": "debit",
+      "amount": 250.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 18:21:17",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "7620d30a-1cb5-451c-b30e-6419230ed13b-sender-b67ba56e-d349-4623-85ae-ae6b2ade4f31",
+      "type": "debit",
+      "amount": 500.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 18:23:44",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "b4d29fca-9e93-4689-bb15-542c3d31c273-receiver-262e84b8-eb9e-4c38-9cc7-bd152436f6c0",
+      "type": "credit",
+      "amount": 1500.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 18:24:21",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "25570b73-7a19-4a21-8d61-3b9c7be9a894-sender-19a35d6c-f0e8-4523-b3f1-e1320fe91337",
+      "type": "debit",
+      "amount": 20.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 20:58:17",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "3f3bc12f-4ca1-45bb-bcef-aafe86643e05-sender-3455",
+      "type": "debit",
+      "amount": 80.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 20:59:07",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "2b216456-1066-4ef9-91cf-acd3701e7d84-receiver-6c0a481f-6d46-4285-8426-b776cbd37753",
+      "type": "credit",
+      "amount": 4.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-10 23:13:31",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "1899f0b0-9078-4689-a596-9b3a6f65f82a-receiver-de5ffeed-36ab-456d-9c7f-ac85643e3562",
+      "type": "credit",
+      "amount": 96.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-11 21:33:26",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "b6cdb4a6-4247-4d69-9ebc-2f22a7c7b776-sender-394adc90-e294-4880-8826-ffc21dda07a9",
+      "type": "debit",
+      "amount": 500.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-11 21:41:08",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "52695da9-226f-4117-95a1-4cefaba58d0c-sender-112",
+      "type": "debit",
+      "amount": 50.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-11 21:41:49",
+      "status": "completed"
+    },
+    {
+      "transaction_id": "aa0494e7-3e5b-4830-9701-9937de0363c0-receiver-7d0304c8-f672-49ca-87e9-fdd7393970e4",
+      "type": "credit",
+      "amount": 50.0,
+      "counterparty": "Bank1/ACC001",
+      "timestamp": "2025-03-11 21:42:14",
+      "status": "completed"
+    }
+  ]
+}

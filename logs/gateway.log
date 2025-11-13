@@ -1,0 +1,53 @@
+2025-03-11 21:41:00,594 - PaymentGateway - INFO - Loaded 4 active tokens from storage
+2025-03-11 21:41:00,611 - PaymentGateway - INFO - Payment Gateway initialized with connections to 2 banks
+2025-03-11 21:41:00,614 - PaymentGateway - INFO - Payment Gateway started securely at [::]:50051
+2025-03-11 21:41:08,532 - PaymentGateway - INFO - Request received: Method=ProcessPayment, Client=unknown
+2025-03-11 21:41:08,533 - PaymentGateway - INFO - Request details: Method=ProcessPayment, Client=user2, Data={'token': 'user2-6c52f12a-518d-475f-b086-1ec5f7d1f781', 'sender_account': 'self', 'receiver_account': 'ACC001', 'receiver_bank': 'Bank1', 'amount': 500.0, 'payment_id': '394adc90-e294-4880-8826-ffc21dda07a9'}
+2025-03-11 21:41:08,577 - PaymentGateway - INFO - Processing payment with 2PC: 500.0 from Bank1/ACC002 to Bank1/ACC001
+2025-03-11 21:41:08,577 - PaymentGateway - INFO - 2PC Phase 1: Prepare transactions
+2025-03-11 21:41:08,581 - PaymentGateway - INFO - 2PC Phase 2: Commit transactions
+2025-03-11 21:41:08,631 - PaymentGateway - INFO - 2PC completed successfully in 0.05 seconds for transaction b6cdb4a6-4247-4d69-9ebc-2f22a7c7b776
+2025-03-11 21:41:08,631 - PaymentGateway - INFO - Transaction completed: Method=ProcessPayment, Client=user2, Amount=500.0, Status=completed
+2025-03-11 21:41:08,632 - PaymentGateway - INFO - Response sent: Method=ProcessPayment, Client=user2, Status=OK, Data={'success': True, 'transaction_id': 'b6cdb4a6-4247-4d69-9ebc-2f22a7c7b776', 'status': 'completed', 'message': 'Payment processed successfully'}
+2025-03-11 21:41:15,662 - PaymentGateway - INFO - Request received: Method=CheckBalance, Client=unknown
+2025-03-11 21:41:15,663 - PaymentGateway - INFO - Request details: Method=CheckBalance, Client=user1, Data={'token': 'user1-a6063b92-1c54-46f9-9ab7-6a8a78a13756', 'account_id': ''}
+2025-03-11 21:41:15,665 - PaymentGateway - INFO - Balance check for user user1 at bank Bank1
+2025-03-11 21:41:15,666 - PaymentGateway - INFO - Response sent: Method=CheckBalance, Client=user1, Status=OK, Data={'success': True, 'balance': 1500.0, 'message': 'Balance retrieved successfully'}
+2025-03-11 21:41:20,034 - PaymentGateway - INFO - Request received: Method=CheckBalance, Client=unknown
+2025-03-11 21:41:20,035 - PaymentGateway - INFO - Request details: Method=CheckBalance, Client=user2, Data={'token': 'user2-6c52f12a-518d-475f-b086-1ec5f7d1f781', 'account_id': ''}
+2025-03-11 21:41:20,037 - PaymentGateway - INFO - Balance check for user user2 at bank Bank1
+2025-03-11 21:41:20,037 - PaymentGateway - INFO - Response sent: Method=CheckBalance, Client=user2, Status=OK, Data={'success': True, 'balance': 1000.0, 'message': 'Balance retrieved successfully'}
+2025-03-11 21:41:49,139 - PaymentGateway - INFO - Request received: Method=ProcessPayment, Client=unknown
+2025-03-11 21:41:49,140 - PaymentGateway - INFO - Request details: Method=ProcessPayment, Client=user2, Data={'token': 'user2-6c52f12a-518d-475f-b086-1ec5f7d1f781', 'sender_account': 'self', 'receiver_account': 'ACC001', 'receiver_bank': 'Bank1', 'amount': 50.0, 'payment_id': '112'}
+2025-03-11 21:41:49,143 - PaymentGateway - INFO - Processing payment with 2PC: 50.0 from Bank1/ACC002 to Bank1/ACC001
+2025-03-11 21:41:49,143 - PaymentGateway - INFO - 2PC Phase 1: Prepare transactions
+2025-03-11 21:41:49,146 - PaymentGateway - INFO - 2PC Phase 2: Commit transactions
+2025-03-11 21:41:49,196 - PaymentGateway - INFO - 2PC completed successfully in 0.05 seconds for transaction 52695da9-226f-4117-95a1-4cefaba58d0c
+2025-03-11 21:41:49,196 - PaymentGateway - INFO - Transaction completed: Method=ProcessPayment, Client=user2, Amount=50.0, Status=completed
+2025-03-11 21:41:49,197 - PaymentGateway - INFO - Response sent: Method=ProcessPayment, Client=user2, Status=OK, Data={'success': True, 'transaction_id': '52695da9-226f-4117-95a1-4cefaba58d0c', 'status': 'completed', 'message': 'Payment processed successfully'}
+2025-03-11 21:41:53,506 - PaymentGateway - INFO - Request received: Method=ProcessPayment, Client=unknown
+2025-03-11 21:41:53,507 - PaymentGateway - INFO - Request details: Method=ProcessPayment, Client=user2, Data={'token': 'user2-6c52f12a-518d-475f-b086-1ec5f7d1f781', 'sender_account': 'self', 'receiver_account': 'ACC001', 'receiver_bank': 'Bank1', 'amount': 50.0, 'payment_id': '112'}
+2025-03-11 21:41:53,508 - PaymentGateway - INFO - Returning cached result for idempotent request: 112
+2025-03-11 21:41:53,508 - PaymentGateway - INFO - Transaction completed: Method=ProcessPayment, Client=user2, Amount=50.0, Status=completed
+2025-03-11 21:41:53,508 - PaymentGateway - INFO - Response sent: Method=ProcessPayment, Client=user2, Status=OK, Data={'success': True, 'transaction_id': '52695da9-226f-4117-95a1-4cefaba58d0c', 'status': 'completed', 'message': 'Payment processed successfully'}
+2025-03-11 21:41:58,101 - PaymentGateway - INFO - Request received: Method=CheckBalance, Client=unknown
+2025-03-11 21:41:58,102 - PaymentGateway - INFO - Request details: Method=CheckBalance, Client=user2, Data={'token': 'user2-6c52f12a-518d-475f-b086-1ec5f7d1f781', 'account_id': ''}
+2025-03-11 21:41:58,104 - PaymentGateway - INFO - Balance check for user user2 at bank Bank1
+2025-03-11 21:41:58,104 - PaymentGateway - INFO - Response sent: Method=CheckBalance, Client=user2, Status=OK, Data={'success': True, 'balance': 950.0, 'message': 'Balance retrieved successfully'}
+2025-03-11 21:42:14,234 - PaymentGateway - INFO - Request received: Method=ProcessPayment, Client=unknown
+2025-03-11 21:42:14,235 - PaymentGateway - INFO - Request details: Method=ProcessPayment, Client=user1, Data={'token': 'user1-a6063b92-1c54-46f9-9ab7-6a8a78a13756', 'sender_account': 'self', 'receiver_account': 'ACC002', 'receiver_bank': 'Bank1', 'amount': 50.0, 'payment_id': '7d0304c8-f672-49ca-87e9-fdd7393970e4'}
+2025-03-11 21:42:14,237 - PaymentGateway - INFO - Processing payment with 2PC: 50.0 from Bank1/ACC001 to Bank1/ACC002
+2025-03-11 21:42:14,237 - PaymentGateway - INFO - 2PC Phase 1: Prepare transactions
+2025-03-11 21:42:14,241 - PaymentGateway - INFO - 2PC Phase 2: Commit transactions
+2025-03-11 21:42:14,246 - PaymentGateway - INFO - 2PC completed successfully in 0.01 seconds for transaction aa0494e7-3e5b-4830-9701-9937de0363c0
+2025-03-11 21:42:14,247 - PaymentGateway - INFO - Transaction completed: Method=ProcessPayment, Client=user1, Amount=50.0, Status=completed
+2025-03-11 21:42:14,247 - PaymentGateway - INFO - Response sent: Method=ProcessPayment, Client=user1, Status=OK, Data={'success': True, 'transaction_id': 'aa0494e7-3e5b-4830-9701-9937de0363c0', 'status': 'completed', 'message': 'Payment processed successfully'}
+2025-03-11 21:42:16,811 - PaymentGateway - INFO - Request received: Method=CheckBalance, Client=unknown
+2025-03-11 21:42:16,812 - PaymentGateway - INFO - Request details: Method=CheckBalance, Client=user1, Data={'token': 'user1-a6063b92-1c54-46f9-9ab7-6a8a78a13756', 'account_id': ''}
+2025-03-11 21:42:16,815 - PaymentGateway - INFO - Balance check for user user1 at bank Bank1
+2025-03-11 21:42:16,815 - PaymentGateway - INFO - Response sent: Method=CheckBalance, Client=user1, Status=OK, Data={'success': True, 'balance': 1500.0, 'message': 'Balance retrieved successfully'}
+2025-03-11 21:42:19,384 - PaymentGateway - INFO - Request received: Method=CheckBalance, Client=unknown
+2025-03-11 21:42:19,385 - PaymentGateway - INFO - Request details: Method=CheckBalance, Client=user2, Data={'token': 'user2-6c52f12a-518d-475f-b086-1ec5f7d1f781', 'account_id': ''}
+2025-03-11 21:42:19,388 - PaymentGateway - INFO - Balance check for user user2 at bank Bank1
+2025-03-11 21:42:19,388 - PaymentGateway - INFO - Response sent: Method=CheckBalance, Client=user2, Status=OK, Data={'success': True, 'balance': 1000.0, 'message': 'Balance retrieved successfully'}
+2025-03-11 21:42:48,834 - PaymentGateway - INFO - Payment Gateway shutting down...

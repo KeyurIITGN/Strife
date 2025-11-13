@@ -1,0 +1,26 @@
+{
+  "user1-c709abfb-bb70-46ef-8bfc-22aa023662b1": {
+    "username": "user1",
+    "bank": "Bank1",
+    "account": "ACC001",
+    "expires": 1741712509.2663116
+  },
+  "user2-f64d4a3c-3477-4820-a911-f2cad841d499": {
+    "username": "user2",
+    "bank": "Bank1",
+    "account": "ACC002",
+    "expires": 1741712530.5461028
+  },
+  "user1-a6063b92-1c54-46f9-9ab7-6a8a78a13756": {
+    "username": "user1",
+    "bank": "Bank1",
+    "account": "ACC001",
+    "expires": 1741712941.4117026
+  },
+  "user2-6c52f12a-518d-475f-b086-1ec5f7d1f781": {
+    "username": "user2",
+    "bank": "Bank1",
+    "account": "ACC002",
+    "expires": 1741712963.3278804
+  }
+}
